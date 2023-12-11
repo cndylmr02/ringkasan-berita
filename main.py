@@ -59,7 +59,7 @@ if st.button("Ringkas"):
             st.write(f"Kalimat {node+1}: {centrality_score:.4f}")
 
         # Ekstraksi kata kunci berdasarkan TF-IDF
-        feature_names = vectorizer.get_feature_names_out()
+        feature_names = vectorizer.get_feature_names()
         tfidf_scores = matriks_tfidf.sum(axis=0).A1
         top_keywords_indices = tfidf_scores.argsort()[-jumlah_kata_kunci:][::-1]
         top_keywords = [feature_names[idx] for idx in top_keywords_indices]
