@@ -1,3 +1,4 @@
 streamlit
+gensim
 transformers
 bert-extractive-summarizer==0.8.1
