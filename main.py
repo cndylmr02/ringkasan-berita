@@ -1,5 +1,5 @@
 import streamlit as st
-from gensim.summarization import summarize
+from summarizer import Summarizer
 
 # Title
 st.title('Aplikasi Ringkas Berita')
@@ -12,8 +12,11 @@ if st.button("Ringkas"):
     if not berita_input:
         st.warning("Masukkan teks berita terlebih dahulu.")
     else:
-        # Summarize the input text using Gensim's summarize function
-        summary = summarize(berita_input)
+        # Load pre-trained BERT model for extractive summarization
+        model = Summarizer()
+
+        # Summarize the input text
+        summary = model(berita_input)
 
         # Display the summarized text
         st.subheader("Ringkasan:")
