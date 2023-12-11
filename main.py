@@ -9,15 +9,15 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 # Load dataset
-df = pd.read_csv('data-uas.csv')  # Ganti dengan nama file dataset Anda
+df = pd.read_csv('data-uas.csv')  
 
 # Train the model
-X_train, X_test, y_train, y_test = train_test_split(df['text'], df['category'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(df['Artikel'], df['Kategori'], test_size=0.2, random_state=42)
 model = make_pipeline(TfidfVectorizer(), MultinomialNB())
 model.fit(X_train, y_train)
 
 # Calculate cosine similarity matrix
-tfidf_matrix = TfidfVectorizer().fit_transform(df['text'])
+tfidf_matrix = TfidfVectorizer().fit_transform(df['Artikel'])
 cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
 
 # Create graph using cosine similarity
@@ -31,13 +31,13 @@ for i in range(len(df)):
 closeness_centrality = nx.closeness_centrality(G)
 
 # Streamlit App
-st.title("Aplikasi untuk Mengklasifikasikan Kategori pada Suatu Berita")
+st.title("Aplikasi Klasifikasi Kategori Berita")
 
 # User input
 user_input = st.text_area("Masukkan Berita:", "")
 
 # Predict category on button click
-if st.button("Prediksi Kategori"):
+if st.button("Predict Category"):
     if user_input:
         # Predict category
         prediction = model.predict([user_input])[0]
@@ -53,4 +53,4 @@ if st.button("Prediksi Kategori"):
         st.subheader("Closeness Centrality:")
         st.write(closeness_centrality)
     else:
-        st.warning("Please enter a news headline.")
+        st.warning("Mohon Masukkan Berita.")
