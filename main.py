@@ -34,7 +34,7 @@ target = news_dataset['Kategori']
 
 # Vektorisasi TF-IDF
 st.write("## Vektorisasi TF-IDF")
-vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
+vectorizer = TfidfVectorizer(stop_words='english', max_features=5000, decode_error='replace')
 X = vectorizer.fit_transform(fitur).toarray()
 X = pd.DataFrame(X, columns=vectorizer.get_feature_names_out())
 
