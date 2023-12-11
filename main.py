@@ -29,8 +29,8 @@ st.write('## Nilai yang Hilang')
 st.write(news_dataset.isna().sum())
 
 # Fitur dan Target
-fitur = news_dataset['text']
-target = news_dataset['category']
+fitur = news_dataset['Artikel']
+target = news_dataset['Kategori']
 
 # Vektorisasi TF-IDF
 st.write("## Vektorisasi TF-IDF")
