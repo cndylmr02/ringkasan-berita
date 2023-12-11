@@ -18,7 +18,7 @@ st.title('Aplikasi Klasifikasi Kategori Berita')
 
 # Load your news dataset
 # Pastikan dataset Anda memiliki kolom 'text' untuk konten berita dan 'category' untuk kategori berita
-news_dataset = pd.read_csv('your_news_dataset.csv')  # Ganti 'your_news_dataset.csv' dengan jalur file aktual Anda
+news_dataset = pd.read_csv('data-uas.csv')  # Ganti 'your_news_dataset.csv' dengan jalur file aktual Anda
 
 # Tampilkan Dataset
 st.write('## Dataset Berita')
